@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1699997521105436" crossorigin="anonymous"></script>
+<title>Suanzhi — Rankine Earth Pressure & Asian Transcript GPA Calculators</title>
+<meta name="description" content="Free engineering calculators with full worked steps: Rankine active and passive earth pressure with cohesion, surcharge and water table; percentage-to-GPA conversion for Taiwanese and Asian transcripts (4.0, 4.3, Australian WAM); stress unit converter.">
+<link rel="alternate" hreflang="zh-Hant" href="https://suanzhii.netlify.app/">
+<link rel="alternate" hreflang="en" href="https://suanzhii.netlify.app/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light only;
+  --paper:#FFFFFF; --surface:#F7F8F7; --ink:#1A201D;
+  --muted:#6E7873; --line:#E4E7E4; --accent:#1D5C8A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#FFFFFF;color-scheme:light only}
+body{
+  margin:0;background:#FFFFFF;color:#1A201D;
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:640px;margin:0 auto;padding:0 24px}
+
+.masthead{padding:64px 0 8px}
+.langbar{font-size:13px;color:var(--muted);margin:0 0 28px}
+.langbar a{color:var(--accent);text-decoration:none}
+.wordmark{font-size:30px;font-weight:600;letter-spacing:-.01em;margin:0}
+.wordmark span{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:400;
+  letter-spacing:.24em;color:var(--muted);margin-left:12px;vertical-align:2px;
+}
+.lede{font-size:16px;color:var(--muted);margin:14px 0 0;max-width:44ch}
+
+.tool{padding:52px 0;border-top:1px solid var(--line)}
+.tool:first-of-type{border-top:none;padding-top:44px}
+.tag{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 10px;
+}
+.tool h2{font-size:21px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.note{font-size:15px;color:var(--muted);margin:0 0 26px}
+
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.field{flex:1 1 150px;margin-bottom:18px}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}
+.field .hint{font-size:11px;opacity:.75}
+input,select{
+  width:100%;padding:10px 12px;font-size:16px;
+  font-family:"IBM Plex Mono",monospace;
+  color:var(--ink);background:var(--paper);
+  border:1px solid var(--line);border-radius:4px;
+}
+input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(29,92,138,.12)}
+
+button{
+  font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;
+  padding:9px 16px;border-radius:4px;
+  background:var(--paper);color:var(--accent);border:1px solid var(--line);
+}
+button:hover{border-color:var(--accent)}
+
+.working{
+  margin-top:24px;padding:20px;background:var(--surface);border-radius:6px;
+  font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:2.05;
+  color:var(--muted);
+}
+.working .sub{color:var(--ink)}
+.working .out{
+  font-family:"IBM Plex Sans",sans-serif;
+  font-size:17px;font-weight:600;color:var(--accent);line-height:1.5;
+  border-top:1px solid var(--line);margin-top:14px;padding-top:14px;
+}
+.working .head{
+  font-family:"IBM Plex Sans",sans-serif;font-size:13px;
+  color:var(--ink);margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+}
+.working .head:first-child{margin-top:0;padding-top:0;border-top:none}
+.working .foot{font-size:12px;line-height:1.8;margin-top:12px}
+.working.empty{font-family:inherit;font-size:15px;line-height:1.7}
+
+.scale{display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.scale .k{font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--muted)}
+.scale .v{color:var(--ink);font-weight:500}
+
+.courses{width:100%;border-collapse:collapse;margin-bottom:14px}
+.courses th{font-size:13px;color:var(--muted);text-align:left;padding:0 10px 8px 0;font-weight:400}
+.courses td{padding:0 10px 10px 0;vertical-align:top}
+.courses td.act{width:40px;padding-right:0}
+.del{width:40px;padding:10px 0;color:var(--muted);font-size:15px;line-height:1}
+
+.article{padding:52px 0;border-top:1px solid var(--line)}
+.article h2{font-size:19px;font-weight:600;margin:0 0 14px}
+.article h3{font-size:15px;font-weight:600;margin:26px 0 8px}
+.article p{margin:0 0 14px;font-size:15px}
+.article ul{margin:0 0 14px;padding-left:20px;font-size:15px}
+.article li{margin-bottom:6px}
+
+footer{padding:44px 0 72px;font-size:13px;line-height:1.8;color:var(--muted);border-top:1px solid var(--line)}
+footer p{margin:0 0 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <p class="langbar"><a href="/">繁體中文</a> · English</p>
+  <h1 class="wordmark">Suanzhi<span>算紙</span></h1>
+  <p class="lede">Engineering and academic calculators that show every substitution step, not just the final number.</p>
+</header>
+
+<!-- ===== EARTH PRESSURE ===== -->
+<section class="tool" id="earth">
+  <p class="tag">Geotechnical</p>
+  <h2>Rankine Earth Pressure Calculator</h2>
+  <p class="note">Active and passive lateral earth pressure with cohesion, surcharge and a water table. The pressure diagram is integrated numerically, so the tension zone is handled correctly.</p>
+
+  <div class="row">
+    <div class="field">
+      <label for="e-phi">Friction angle φ (degrees)</label>
+      <input id="e-phi" type="number" value="30" step="any" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="e-c">Cohesion c (kPa)</label>
+      <input id="e-c" type="number" value="0" step="any" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="e-h">Wall height H (m)</label>
+      <input id="e-h" type="number" value="5" step="any" inputmode="decimal">
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label for="e-gamma">Moist unit weight γ (kN/m³)</label>
+      <input id="e-gamma" type="number" value="18" step="any" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="e-gsat">Saturated unit weight γsat (kN/m³)</label>
+      <input id="e-gsat" type="number" value="20" step="any" inputmode="decimal">
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <label for="e-q">Surcharge q (kPa)</label>
+      <input id="e-q" type="number" value="0" step="any" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="e-dw">Water table depth (m) <span class="hint">leave blank if dry</span></label>
+      <input id="e-dw" type="number" value="" step="any" inputmode="decimal" placeholder="none">
+    </div>
+  </div>
+  <div class="working" id="e-out"></div>
+</section>
+
+<!-- ===== GPA ===== -->
+<section class="tool" id="gpa">
+  <p class="tag">Study abroad</p>
+  <h2>Percentage to GPA Converter for Asian Transcripts</h2>
+  <p class="note">Built for students from Taiwan, China, Japan and Korea whose transcripts are scored out of 100. Converts to 4.0 scale, 4.3 scale, US letter scale and the Australian WAM in one pass.</p>
+
+  <table class="courses">
+    <thead><tr><th>Course mark (0–100)</th><th>Credits</th><th class="act"></th></tr></thead>
+    <tbody id="g-rows"></tbody>
+  </table>
+  <button id="g-add" type="button">Add a course</button>
+  <div class="working" id="g-out"></div>
+</section>
+
+<!-- ===== UNITS ===== -->
+<section class="tool" id="stress">
+  <p class="tag">Units</p>
+  <h2>Stress and Pressure Unit Converter</h2>
+  <p class="note">Textbooks use kPa, Asian site reports use kgf/cm², US practice uses psi. Convert between all of them at once.</p>
+  <div class="row">
+    <div class="field">
+      <label for="s-val">Value</label>
+      <input id="s-val" type="number" value="100" step="any" inputmode="decimal">
+    </div>
+    <div class="field">
+      <label for="s-unit">From unit</label>
+      <select id="s-unit">
+        <option value="kPa">kPa</option>
+        <option value="MPa">MPa</option>
+        <option value="kgf/cm²">kgf/cm²</option>
+        <option value="tf/m²">tf/m²</option>
+        <option value="psi">psi</option>
+        <option value="bar">bar</option>
+      </select>
+    </div>
+  </div>
+  <div class="working" id="s-out"></div>
+</section>
+
+<!-- ===== ARTICLE ===== -->
+<article class="article">
+  <h2>How Rankine earth pressure is calculated</h2>
+
+  <p>Rankine's theory treats the soil behind a retaining wall as reaching a state of plastic equilibrium. When the wall moves away from the backfill the soil expands laterally and the horizontal stress drops to its minimum value, the active pressure. When the wall pushes into the soil the horizontal stress rises to its maximum, the passive pressure.</p>
+
+  <h3>Coefficients</h3>
+  <p>For a vertical wall back, a horizontal ground surface and no wall friction, the coefficients depend only on the friction angle: Ka is the square of the tangent of forty-five degrees minus half of phi, and Kp is the square of the tangent of forty-five degrees plus half of phi. Kp is always the reciprocal of Ka for these assumptions.</p>
+
+  <h3>Pressure at depth</h3>
+  <p>Active pressure at any depth equals Ka times the effective vertical stress, minus twice the cohesion times the square root of Ka. Passive pressure equals Kp times the effective vertical stress, plus twice the cohesion times the square root of Kp. Cohesion therefore reduces active pressure and increases passive pressure.</p>
+
+  <h3>The tension crack</h3>
+  <p>In a cohesive soil the active pressure near the surface comes out negative, which would imply the soil pulling on the wall. Soil cannot sustain that tension, so a crack forms instead. This calculator sets any negative active pressure to zero and excludes that zone from the resultant, which is the conservative approach used in practice.</p>
+
+  <h3>Water table</h3>
+  <p>Below the water table the buoyant unit weight governs the effective stress, and pore water pressure acts on the wall separately as a full hydrostatic triangle. Water pressure is not reduced by Ka, which is why a poorly drained wall attracts far more total force than a drained one. The results above list the soil and water resultants separately for this reason.</p>
+
+  <h3>Limits of the method</h3>
+  <ul>
+    <li>Assumes a vertical wall back, level ground surface and no friction between wall and soil</li>
+    <li>Passive values are ultimate; design practice applies a factor of safety</li>
+    <li>Sloping backfill and inclined walls need the Coulomb formulation instead</li>
+    <li>Results are for study and preliminary checking, not for construction without review by a licensed engineer</li>
+  </ul>
+
+  <h2 style="margin-top:44px">Converting an Asian transcript to GPA</h2>
+
+  <p>Most universities in Taiwan, mainland China, Japan and Korea record marks out of one hundred. Universities in the United States, Canada and Australia expect something else, and the conversion is not standardised. Three different methods are in common use and they can differ by half a grade point on the same transcript.</p>
+
+  <h3>Banded conversion</h3>
+  <p>The most common approach in Taiwan maps score bands onto grade points: eighty and above becomes four, seventy to seventy-nine becomes three, and so on. It is simple but coarse, since a student averaging eighty-one and one averaging ninety-nine both come out at 4.0.</p>
+
+  <h3>Linear conversion</h3>
+  <p>The weighted average is multiplied by four and divided by one hundred. This preserves differences between strong students but tends to understate results, because an average of eighty-five converts to 3.4 rather than the 4.0 the banded method would give.</p>
+
+  <h3>Weighted average mark</h3>
+  <p>Australian universities, including the University of Western Australia and the University of Melbourne, mostly work directly with the weighted average mark rather than any four point scale. The calculation is the sum of each mark multiplied by its credit points, divided by total credit points. If you are applying to Australia this is usually the number that matters, and converting to a 4.0 scale first can only lose information.</p>
+
+  <h3>Which number to submit</h3>
+  <p>Check the admissions page of each programme before deciding. Many universities publish their own conversion table for specific countries, and where one exists it overrides every general method. Some require an official evaluation from a credential service instead. The figures produced here are for planning and self assessment.</p>
+</article>
+
+<footer>
+  <p>Calculations are provided for study and preliminary estimation. Engineering results must be reviewed by a licensed engineer before use in design.</p>
+  <p>GPA conversion standards differ between institutions. Always confirm with the admissions office of the university you are applying to.</p>
+  <p>About · Privacy Policy · Contact</p>
+</footer>
+
+</div>
+
+<script>
+const GW = 9.81;
+const fmt = (n, d = 3) => {
+  if (!isFinite(n)) return "—";
+  if (n !== 0 && (Math.abs(n) < 0.001 || Math.abs(n) >= 1e6)) return n.toExponential(3);
+  return Number(n.toFixed(d)).toString();
+};
+const num = id => parseFloat(document.getElementById(id).value);
+
+/* ===== GPA ===== */
+const rowsBody = document.getElementById("g-rows");
+function addRow(score = "", credit = ""){
+  const tr = document.createElement("tr");
+  tr.innerHTML =
+    '<td><input type="number" class="g-score" value="' + score + '" min="0" max="100" step="any" inputmode="decimal" placeholder="85"></td>' +
+    '<td><input type="number" class="g-credit" value="' + credit + '" min="0" step="any" inputmode="decimal" placeholder="3"></td>' +
+    '<td class="act"><button class="del" type="button" aria-label="Remove course">×</button></td>';
+  rowsBody.appendChild(tr);
+}
+const tw40 = s => s >= 80 ? 4 : s >= 70 ? 3 : s >= 60 ? 2 : s >= 50 ? 1 : 0;
+const us40 = s => s >= 90 ? 4 : s >= 80 ? 3 : s >= 70 ? 2 : s >= 60 ? 1 : 0;
+function tw43(s){
+  if (s >= 90) return 4.3; if (s >= 85) return 4.0; if (s >= 80) return 3.7;
+  if (s >= 77) return 3.3; if (s >= 73) return 3.0; if (s >= 70) return 2.7;
+  if (s >= 67) return 2.3; if (s >= 63) return 2.0; if (s >= 60) return 1.7;
+  if (s >= 50) return 1.0; return 0;
+}
+const auGrade = w => w >= 80 ? "HD — High Distinction" : w >= 70 ? "D — Distinction" : w >= 60 ? "C — Credit" : w >= 50 ? "P — Pass" : "F — Fail";
+
+function calcGpa(){
+  const box = document.getElementById("g-out");
+  let cr = 0, sw = 0, p40 = 0, p43 = 0, pus = 0, n = 0;
+  rowsBody.querySelectorAll("tr").forEach(tr => {
+    const s = parseFloat(tr.querySelector(".g-score").value);
+    const c = parseFloat(tr.querySelector(".g-credit").value);
+    if (!isFinite(s) || !isFinite(c) || c <= 0) return;
+    cr += c; sw += s * c; p40 += tw40(s) * c; p43 += tw43(s) * c; pus += us40(s) * c; n++;
+  });
+  if (!n) {
+    box.className = "working empty";
+    box.textContent = "Enter at least one course mark and its credits.";
+    return;
+  }
+  box.className = "working";
+  const wam = sw / cr;
+  box.innerHTML =
+    '<div class="head">Weighted average</div>' +
+    '<div>Σ(mark × credits) ÷ total credits = ' + fmt(sw,1) + ' ÷ ' + fmt(cr,1) + ' = <span class="sub">' + fmt(wam,2) + '</span></div>' +
+    '<div class="head">Converted results</div>' +
+    '<div class="scale"><span class="k">Weighted Average Mark (Australia)</span><span class="v">' + fmt(wam,2) + '</span></div>' +
+    '<div class="scale"><span class="k">Australian grade</span><span class="v">' + auGrade(wam) + '</span></div>' +
+    '<div class="scale"><span class="k">4.0 scale (banded)</span><span class="v">' + fmt(p40/cr,2) + ' / 4.0</span></div>' +
+    '<div class="scale"><span class="k">4.3 scale</span><span class="v">' + fmt(p43/cr,2) + ' / 4.3</span></div>' +
+    '<div class="scale"><span class="k">US letter scale</span><span class="v">' + fmt(pus/cr,2) + ' / 4.0</span></div>' +
+    '<div class="scale"><span class="k">Linear (average × 4 ÷ 100)</span><span class="v">' + fmt(wam*4/100,2) + ' / 4.0</span></div>' +
+    '<div class="out">' + n + ' courses counted, ' + fmt(cr,1) + ' total credits</div>' +
+    '<div class="foot">' +
+      'Banded: 80–100→4, 70–79→3, 60–69→2, 50–59→1<br>' +
+      '4.3 scale: 90+→4.3, 85–89→4.0, 80–84→3.7, 77–79→3.3, 73–76→3.0, 70–72→2.7, 67–69→2.3, 63–66→2.0, 60–62→1.7, 50–59→1.0<br>' +
+      'US letter: 90+→A, 80–89→B, 70–79→C, 60–69→D' +
+    '</div>';
+}
+
+/* ===== EARTH PRESSURE ===== */
+function calcEarth(){
+  const box = document.getElementById("e-out");
+  const phi = num("e-phi"), c = num("e-c"), H = num("e-h");
+  const gam = num("e-gamma"), gsat = num("e-gsat"), q = num("e-q");
+  const dwRaw = document.getElementById("e-dw").value.trim();
+
+  if (![phi,c,H,gam,q].every(isFinite) || phi < 0 || phi >= 90 || H <= 0 || gam <= 0 || c < 0 || q < 0) {
+    box.className = "working empty";
+    box.textContent = "φ must be between 0 and 90 degrees. H and γ must be positive. c and q cannot be negative.";
+    return;
+  }
+  const hasW = dwRaw !== "" && isFinite(parseFloat(dwRaw)) && parseFloat(dwRaw) < H;
+  const dw = hasW ? Math.max(0, parseFloat(dwRaw)) : H;
+  if (hasW && (!isFinite(gsat) || gsat <= GW)) {
+    box.className = "working empty";
+    box.textContent = "With a water table, γsat must exceed the unit weight of water (9.81 kN/m³).";
+    return;
+  }
+  box.className = "working";
+
+  const Ka = Math.pow(Math.tan((45 - phi/2) * Math.PI/180), 2);
+  const Kp = Math.pow(Math.tan((45 + phi/2) * Math.PI/180), 2);
+  const rKa = Math.sqrt(Ka), rKp = Math.sqrt(Kp);
+
+  const N = 4000, dz = H / N;
+  let Pa = 0, Ma = 0, Pw = 0, Mw = 0, Pp = 0, Mp = 0;
+  for (let i = 0; i < N; i++){
+    const z = (i + 0.5) * dz;
+    const sv = q + (z <= dw ? gam*z : gam*dw + (gsat - GW)*(z - dw));
+    const sa = Math.max(0, Ka*sv - 2*c*rKa);
+    const sp = Kp*sv + 2*c*rKp;
+    const u  = z > dw ? GW*(z - dw) : 0;
+    Pa += sa*dz; Ma += sa*(H - z)*dz;
+    Pp += sp*dz; Mp += sp*(H - z)*dz;
+    Pw += u*dz;  Mw += u*(H - z)*dz;
+  }
+  const ya = Pa > 0 ? Ma/Pa : 0, yw = Pw > 0 ? Mw/Pw : 0, yp = Pp > 0 ? Mp/Pp : 0;
+  const tot = Pa + Pw, ytot = tot > 0 ? (Ma + Mw)/tot : 0;
+  const svBase = q + (H <= dw ? gam*H : gam*dw + (gsat - GW)*(H - dw));
+  const saBase = Math.max(0, Ka*svBase - 2*c*rKa);
+  const zc = c > 0 ? Math.max(0, (2*c/rKa - q) / gam) : 0;
+
+  let html =
+    '<div class="head">Earth pressure coefficients</div>' +
+    '<div>Ka = tan²(45° − φ/2) = <span class="sub">' + fmt(Ka,4) + '</span></div>' +
+    '<div>Kp = tan²(45° + φ/2) = <span class="sub">' + fmt(Kp,4) + '</span></div>';
+  if (c > 0) html +=
+    '<div>Tension crack depth = <span class="sub">' + fmt(Math.min(zc,H),3) + ' m</span></div>';
+  html +=
+    '<div class="head">At the base of the wall</div>' +
+    '<div>Effective vertical stress σv′ = <span class="sub">' + fmt(svBase,2) + ' kPa</span></div>' +
+    '<div>Active pressure σa = Ka·σv′ − 2c√Ka = <span class="sub">' + fmt(saBase,2) + ' kPa</span></div>';
+  if (hasW) html +=
+    '<div>Pore water pressure u = <span class="sub">' + fmt(GW*(H-dw),2) + ' kPa</span></div>';
+  html +=
+    '<div class="head">Resultants per metre run</div>' +
+    '<div class="scale"><span class="k">Active thrust Pa</span><span class="v">' + fmt(Pa,2) + ' kN/m @ ' + fmt(ya,2) + ' m</span></div>';
+  if (hasW) html +=
+    '<div class="scale"><span class="k">Water thrust Pw</span><span class="v">' + fmt(Pw,2) + ' kN/m @ ' + fmt(yw,2) + ' m</span></div>';
+  html +=
+    '<div class="scale"><span class="k">Passive resistance Pp</span><span class="v">' + fmt(Pp,2) + ' kN/m @ ' + fmt(yp,2) + ' m</span></div>' +
+    '<div class="out">Total horizontal thrust ' + fmt(tot,2) + ' kN/m, acting ' + fmt(ytot,2) + ' m above the base</div>' +
+    '<div class="foot">' +
+      'Assumes a vertical wall back, level ground surface and no wall friction.<br>' +
+      'Negative active pressure in the tension zone is set to zero and excluded.<br>' +
+      'Passive values are ultimate and require a factor of safety in design.' +
+    '</div>';
+  box.innerHTML = html;
+}
+
+/* ===== UNITS ===== */
+const TO_KPA = { "kPa":1, "MPa":1000, "kgf/cm²":98.0665, "tf/m²":9.80665, "psi":6.894757, "bar":100 };
+function calcStress(){
+  const v = num("s-val");
+  const u = document.getElementById("s-unit").value;
+  const box = document.getElementById("s-out");
+  if (!isFinite(v)) { box.className = "working empty"; box.textContent = "Enter a value to convert."; return; }
+  box.className = "working";
+  const kPa = v * TO_KPA[u];
+  box.innerHTML = Object.keys(TO_KPA).filter(k => k !== u)
+    .map(k => '<div>' + v + ' ' + u + ' = <span class="sub">' + fmt(kPa/TO_KPA[k], 4) + ' ' + k + '</span></div>').join("")
+    + '<div class="foot">Basis: 1 ' + u + ' = ' + fmt(TO_KPA[u], 6) + ' kPa</div>';
+}
+
+["e-phi","e-c","e-h","e-gamma","e-gsat","e-q","e-dw"].forEach(id =>
+  document.getElementById(id).addEventListener("input", calcEarth));
+document.getElementById("s-val").addEventListener("input", calcStress);
+document.getElementById("s-unit").addEventListener("change", calcStress);
+document.getElementById("g-add").addEventListener("click", () => { addRow(); calcGpa(); });
+rowsBody.addEventListener("input", calcGpa);
+rowsBody.addEventListener("click", e => {
+  if (!e.target.classList.contains("del")) return;
+  if (rowsBody.querySelectorAll("tr").length > 1) e.target.closest("tr").remove();
+  else e.target.closest("tr").querySelectorAll("input").forEach(i => i.value = "");
+  calcGpa();
+});
+
+addRow(88, 3); addRow(76, 2); addRow(92, 3);
+calcGpa(); calcEarth(); calcStress();
+</script>
+</body>
+</html>
